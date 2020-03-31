@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<agent-input>
+  <variables>
+    <variable name='sharedLocation' value='/opt/IBM/IBMIMShared'/>
+  </variables>
+  <server>
+    <repository location='./im.linux.x86_64'/>
+    <repository location='./OMNIbusRepository'/>
+  </server>
+  <profile id='IBM Installation Manager' installLocation='/opt/IBM/InstallationManager/eclipse' kind='self'>
+    <data key='cic.selector.arch' value='x86_64'/>
+    <data key='cic.selector.nl' value='hr,zh,tr,pt_BR,no,hu,th,de,fi,zh_TW,fr,sv,sl,sk,da,it,iw,ko,ar,zh_HK,cs,el,pl,en,ru,es,nl,ja'/>
+  </profile>
+  <install>
+    <!-- IBM® Installation Manager 1.8.3 -->
+    <offering profile='IBM Installation Manager' id='com.ibm.cic.agent' version='1.8.3000.20150606_0047' features='agent_core,agent_jre,agent_web'/>
+  </install>
+  <profile id='IBM Netcool Core Components' installLocation='/opt/IBM/tivoli/netcool'>
+    <data key='cic.selector.arch' value='x86_64'/>
+    <data key='user.migratedata,com.ibm.tivoli.omnibus.core' value='false'/>
+  </profile>
+  <install>
+    <!-- IBM Tivoli Netcool/OMNIbus 8.1.0.21 -->
+    <offering profile='IBM Netcool Core Components' id='com.ibm.tivoli.omnibus.core' version='5.50.88.20190905_0942' features='nco_core_feature,nco_admin_tools_feature,nco_tec_migration,nco_objserv_feature,nco_g_objserv_feature,nco_bridgeserv_feature,nco_proxyserv_feature,nco_pa_feature,nco_probes_support_feature,nco_gateways_support_feature,nco_mib_manager_feature,nco_extensions_feature'/>
+  </install>
+  <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='${sharedLocation}'/>
+</agent-input>
