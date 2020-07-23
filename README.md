@@ -4,9 +4,9 @@ netcool-base
 This is a Netcool/OMNIbus v8.1 base image.
 Purpose of this image it to serve as a base for various Netcool/OMNIbus images running Object Server, probes, gateways, etc.
 
-Image is based on latest RHEL Universal Base Image (registry.access.redhat.com/ubi8/ubi:latest) to ensure that it is built on certified secure and reliable official Red Hat container image.
+This image is based on latest RHEL Universal Base Image (registry.access.redhat.com/ubi8/ubi:latest) to ensure that it is built on certified secure and reliable official Red Hat container image.
 
-Image can be used for development, testing and custom deployment purposes:
+This image can be used for development, testing and custom deployment purposes:
 - To build custom Netcool/OMNIbus Object Server image for development and testing purposes
 - To build custom image to run Netcool/OMNIbut probe or gateway not currently provided via official registry or for development and testing purposes
 - To build other custom Netcool/OMNIbus images (e.g. Proxy or Firewall Bridge servers)
@@ -17,6 +17,7 @@ TODO:
 -------------------------
 - See if this image could be made official
 - More examples on image usage (Object Server, Proxy, gateways, probes)
+- For Object Server and probe image descendants - research source2image options(new builder image, etc.).
 
 Pre-requisites:
 -------------------------
@@ -28,7 +29,7 @@ Quick Start
 
 1. Clone this repository 
 ```
-git clone https://github.ibm.com/ybeisem/netcool-base
+git clone https://github.com/erzhan46/netcool-base
 ```
 
 2. Acquire Netcool/Omnibus package (64-bit Linux) from Passport Advantage (e.g. _"IBM Tivoli Netcool OMNIbus 8.1.0.21 Core - Linux 64bit Multilingual (CC3V7ML)"_ ) and copy it to omnibus8.1 directory.
@@ -88,8 +89,8 @@ The following is the image sizes observed during development:
 - /opt/IBM/tivoli/netcool
 
 3. Dockerfile contains three sections:
-- Create 'system' image from ubi:latest by installing required OS packages, creating ncoadmin group and netcool user and required directoryes
+- Create 'system' image from ubi:latest by installing required OS packages, creating ncoadmin group and netcool user and required directories
 - Install Netcool/OMNIbus in the temporary 'builder' image by uploading and uncompressing Netcool/OMNIbus package, creating ncoadmin group and netcool user and installing Netcool/OMNIbus using provided response file.
 - Copy /home/netcool and /opt/IBM directories from 'builder' to 'system' image and setting up image labels and environment.
 
-4. Other images build using Netcool/OMNIbus base image should deploy additional functionality and run Netcool/OMNIbus component using netcool user. See (https://github.ibm.com/ybeisem/netcool-snmp-probe) for an example how it could be done.
+4. Other images build using Netcool/OMNIbus base image should deploy additional functionality and run Netcool/OMNIbus component using netcool user. See (https://github.com/erzhan46/netcool-snmp-probe) for an example how it could be done.
